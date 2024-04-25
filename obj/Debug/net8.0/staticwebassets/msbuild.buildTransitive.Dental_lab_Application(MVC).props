@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\buildMultiTargeting\Dental_lab_Application(MVC).props" />
+</Project>

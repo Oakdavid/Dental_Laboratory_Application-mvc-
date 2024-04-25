@@ -1,0 +1,53 @@
+﻿@model IEnumerable<Dental_lab_Application_MVC_.Models.Dtos.DentalServiceDto>
+
+@{
+    ViewData["Title"] = "ViewAllDentalServices";
+}
+
+<h1>Dental Services</h1>
+
+<p>
+    <a asp-action="ViewAllDentalServices"></a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Code)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cost)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Code)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cost)
+            </td>
+            <td>
+               @*  @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) | *@
+                    <a asp-action="UpdateDentalService" asp asp-controller="DentalService" asp-route-id="@item.Id">update</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

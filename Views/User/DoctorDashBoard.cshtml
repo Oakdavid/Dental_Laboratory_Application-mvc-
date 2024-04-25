@@ -1,0 +1,77 @@
+﻿@using System.Security.Claims
+
+@{
+    Layout = null;
+    if (TempData["Success"] != null)
+    {
+        <div class="alert-success">
+            @TempData["Success"].ToString()
+        </div>
+
+    }
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+<body>
+    <div class ="text-center">
+        <header>
+            <h1 id="welcomeMessage"  class="display-4"> Welcome Doctor @User.FindFirst(ClaimTypes.Name).Value </h1>
+            <script>
+                var welcomeMessage = document.getElementById("welcomeMessage");
+                function hideWelcomeMessage() { welcomeMessage.style.display = "none"; }
+                setTimeout(hideWelcomeMessage, 3000);
+            </script>
+        </header>
+    </div>
+    <nav>
+        <ul>
+            <li><a href="#">View All Patients Assigned</a></li>
+            <li><a href="#">Send a Report to Patient</a></li>
+        </ul>
+    </nav>
+
+    <form id="logoutForm" asp-controller="User" asp-action="Logout" method="post">
+        <button type="submit" class="btn btn-dark">Logout</button>
+    </form>
+
+    <div>
+        <main>
+            <section class="Dental services">
+                <div class="dental services list">
+                    <a asp-action="ViewAllDentalServices" asp-controller="DentalService"> Dental services</a>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <div>
+        <main>
+            <section class="Update your specialization">
+                <div class="doctor update">
+                    <a asp-action="UpdateDoctor" asp-controller="Doctor"> Update your Profile</a>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <div>
+        <a asp-action="DoctorDashBoard" asp-controller="User">Back to Home</a>
+    </div>  
+    </>
+</body>
+</html>
+
+
+<nav>
+    <ul>
+        <li><a href="#">view all Patients assigned </a></li>
+        <li><a href="#">send a report to patient</a></li>
+    </ul>
+</nav>

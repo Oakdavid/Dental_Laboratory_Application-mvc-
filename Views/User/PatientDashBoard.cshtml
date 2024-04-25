@@ -1,0 +1,58 @@
+﻿@using System.Security.Claims
+
+@{
+    if (TempData["Success"] != null)
+    {
+        <div class="alert-success">
+            @TempData["Success"].ToString()
+        </div>
+    }
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-asp-append-version="true" />
+</head>
+<body>
+    <div class="text-center">
+        <header>
+            <h1 id="welcomeMessage" class="display-4"> Welcome @User.FindFirst(ClaimTypes.Name).Value </h1>
+            <script>
+                var welcomeMessage = document.getElementById("welcomeMessage");
+                function hideWelcomeMessage() { welcomeMessage.style.display = "none"; }
+                setTimeout(hideWelcomeMessage, 3000);
+            </script>
+        </header>
+    </div>
+    <form id="logoutForm" asp-controller="User" asp-action="Logout" method="post">
+        <button type="submit" class="btn btn-dark">Logout</button>
+    </form>
+
+    <div>
+        <section class="Dental services">
+            <div class="dental services list">
+                <a asp-action="ViewAllDentalServices" asp-controller="DentalService"> Click to view our services</a>
+            </div>
+        </section>
+    </div>
+    <div>
+        <section class="Patient">
+            <div class="Patient services">
+                <a asp-action="UpdatePatientProfile" asp-controller="Patient"> Update your Profile</a>
+            </div>
+        </section>
+    </div>
+</body>
+</html>
+<div>
+    
+    2. i should be able to book an appointment with a doctor(the options should be dynamic
+    incase if need be to add another service)
+    3. i should be able to view appointment date// it might not be needed
+    4. booking of appointment can be virtual or physical
+</div>
+

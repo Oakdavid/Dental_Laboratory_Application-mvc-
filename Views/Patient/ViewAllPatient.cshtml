@@ -1,0 +1,100 @@
+﻿@model IEnumerable<Dental_lab_Application_MVC_.Models.Dtos.PatientDto>
+
+@{
+    ViewData["Title"] = "ViewAllPatient";
+}
+@{
+    if (TempData["Success"] != null)
+    {
+        <h1>
+            <div class="alert-success">
+                @TempData["Success"].ToString()
+            </div>
+        </h1>
+
+    }
+}
+
+
+<h1>All Patient</h1>
+
+<p>
+    <a asp-action="ViewAllPatient"></a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.UserId)
+            </th>
+           @*  <th>
+                @Html.DisplayNameFor(model => model.DoctorId)
+            </th> *@
+            <th>
+                @Html.DisplayNameFor(model => model.CardNo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MedicalHistory)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Appointments)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LastName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Address)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateOfBirth)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Contact)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Gender)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CardNo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MedicalHistory)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Appointments)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FirstName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LastName)
+                </td>
+                <td>
+                        @Html.DisplayFor(modelItem => item.Address)
+                </td>
+                <td>
+                        @Html.DisplayFor(modelItem => item.DateOfBirth)
+                </td>
+                <td>
+                        @Html.DisplayFor(modelItem => item.Contact)
+                </td>
+                <td>
+                        @Html.DisplayFor(modelItem => item.Gender)
+                </td>
+                  <td>
+            </tr>
+        }
+    </tbody>
+</table>

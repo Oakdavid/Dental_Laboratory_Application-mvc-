@@ -1,0 +1,55 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - RYC DentalLab</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/Dental_lab_Application_MVC_.styles.css" asp-append-version="true" />
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <img src="~/pictures/Logo.jpg" alt="Dental Lab">
+            </div>
+           @*  <div class="Link">
+                <a class="nav-link dropdown-toggle signUp" href="#" role="button" data-bs-toggle="dropdown"
+                   aria-expanded="false">
+                    SignUp
+                </a>
+                
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <li><a class="dropdown-item" asp-area="" asp-controller="Doctor" asp-action="CreateDoctor">Doctor</a></li>
+                    <li><a class="dropdown-item" asp-area="" asp-controller="Patient" asp-action="CreatePatient">Patient</a></li>
+                </ul>
+                <li class="nav-item">
+                    <a class="nav-link text-dark login-link" asp-area="" asp-controller="User"
+                       asp-action="Login">Login</a>
+                </li>
+
+            </div> *@
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer>
+
+        <div class="container-footer">
+          <h2>Regaining your confidence</h2>
+           <span class="privacy">
+                &copy; 2024 - Dental_lab_Application_MVC_ - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+           </span> 
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

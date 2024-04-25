@@ -1,0 +1,46 @@
+﻿*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: skyblue;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    margin: auto;
+    align-items: center;
+    justify-content: center;
+    margin-top: 5%;
+}
+
+.Patient.row {
+    width: 50%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.col-md-4{
+    width: 90%;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    padding-top: 10px;
+}
+
+    .form-group input,
+    .form-group select {
+        font-size: 15px;
+        width: 100%;
+        padding: 10px;
+        border-radius: 5px;
+    }
+
+
+

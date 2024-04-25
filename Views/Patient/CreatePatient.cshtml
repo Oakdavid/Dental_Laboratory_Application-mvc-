@@ -1,0 +1,112 @@
+﻿@model Dental_lab_Application_MVC_.Models.Dtos.PatientCreateRequestModel
+@using Dental_lab_Application_MVC_.Models.Enum
+
+@{
+    ViewData["Title"] = "CreatePatient";
+    Layout = null;
+}
+
+<html>
+    <head>
+        <title>@ViewData["Title"]</title>
+        <link rel="stylesheet" href="~/css/login.css" />
+    </head>
+    <body>
+    @{
+        if (TempData["Success"] != null)
+        {
+            <div class="alert-success">
+                @TempData["Success"].ToString()
+            </div>
+        }
+    }
+
+    <hr />
+    <div class="container">
+        <h1>Create Patient</h1>
+        <div class="Patient row">
+            <div class="col-md-4">
+                <form asp-action="CreatePatient">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    @*    <div class="form-group">
+                    <label asp-for="CardNo" class="control-label"></label>
+                    <input asp-for="CardNo" class="form-control" />
+                    </div> *@
+                    <div class="form-group">
+                        <label asp-for="MedicalHistory" class="control-label"></label>
+                        <input asp-for="MedicalHistory" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="UserName" class="control-label"></label>
+                        <input asp-for="UserName" class="form-control" required />
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="UserEmail" class="control-label"></label>
+                        <input asp-for="UserEmail" class="form-control" required />
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Password" class="control-label"></label>
+                        <input asp-for="Password" class="form-control" required />
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="FirstName" class="control-label"></label>
+                        <input asp-for="FirstName" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="LastName" class="control-label"></label>
+                        <input asp-for="LastName" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Address" class="control-label"></label>
+                        <input asp-for="Address" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="DateOfBirth" class="control-label"></label>
+                        <input asp-for="DateOfBirth" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Contact" class="control-label"></label>
+                        <input asp-for="Contact" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Gender" class="control-label"></label>
+                        <select asp-for="Gender" asp-items="Html.GetEnumSelectList<Gender>()" class="form-control"></select>
+                    </div>
+                    @*   <div class="form-group">
+                    <label asp-for="Bio" class="control-label"></label>
+                    <input asp-for="Bio" class="form-control" />
+                    </div> *@
+                    @*   <div class="form-group">
+                    <label asp-for="ProfilePicture" class="control-label"></label>
+                    <input asp-for="ProfilePicture" class="form-control" />
+                    <span asp-validation-for="ProfilePicture" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                    <label asp-for="SocialMediaLink" class="control-label"></label>
+                    <input asp-for="SocialMediaLink" class="form-control" />
+                    <span asp-validation-for="SocialMediaLink" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                    <label asp-for="Interests" class="control-label"></label>
+                    <input asp-for="Interests" class="form-control" />
+                    <span asp-validation-for="Interests" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                    <label asp-for="Skills" class="control-label"></label>
+                    <input asp-for="Skills" class="form-control" />
+                    <span asp-validation-for="Skills" class="text-danger"></span>
+                    </div> *@
+                    <div class="form-group">
+                        <input type="submit" value="Create" class="btn btn-primary" />
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div>
+            <a asp-action="Index">Back to List</a>
+        </div>
+    </div>
+    </body>
+</html>
+

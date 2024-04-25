@@ -1,0 +1,186 @@
+﻿
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: wheat;
+    /*  background-blend-mode:screen;*/
+    background-image: url(../pictures/dent.jpg);
+    background-position: center;
+    background-size:cover;
+    background-repeat: no-repeat;
+    color: #212529;
+}
+
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+
+.logo-container {
+    display: flex;
+    align-items: center;
+}
+
+    .logo-container img {
+        width: 50px; 
+        height: 50px; 
+        margin-right: 10px;
+    }
+
+.company-name {
+    font-size: 1.5rem;
+}
+
+nav.navigation {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.middle-container {
+    display: flex;
+    align-items: center;
+    /*width: 45%;*/
+    justify-content: space-between;
+}
+
+.navigation ul {
+    list-style-type: none;
+    display: flex;
+}
+
+.navigation li {
+    margin-right: 20px;
+    list-style: none;
+}
+
+.nav-link {
+    color: #212529;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 7px;
+    width: 5rem;
+}
+
+.dropdown-toggle-signup {
+    background-color: dimgray;
+    color: white;
+    border-radius: 5px;
+    position: relative;
+}
+/*========================================*/
+/* Initially hide the dropdown menu */
+/*.dropdown-toggle-signup {
+    position: relative;*/ /* Ensure the parent is relatively positioned */
+/*}
+
+.dropdown-menu {
+    display:none;
+    position: absolute;
+    top: 100%;*/ /* Position below the parent */
+    /*left: 0;*/
+    /*background-color: orangered;*/
+/*}
+
+.dropdown-toggle-signup:hover .dropdown-menu {
+    display: block;
+}
+
+.dropdown-menu li {
+    display: block;
+    margin-right: 5px;
+}
+
+    .dropdown-menu li:hover {
+        background-color: orangered;*/ /* Adjust as needed */
+        /*color: white;
+    }*/
+
+.dropdown-toggle-signup {
+    position: relative; /* Ensure the parent is relatively positioned */
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: calc(100% - 1px); /* Position below the parent */
+    left: 0;
+    background-color: chocolate;
+}
+
+.dropdown-toggle-signup:hover + .dropdown-menu {
+    display: block;
+}
+
+.dropdown-menu li {
+    display: block;
+    margin-right: 5px;
+}
+
+    .dropdown-menu li:hover {
+        background-color: chocolate; /* Adjust as needed */
+        color: white;
+    }
+
+.dropdown-item {
+    color: blue; /* Adjust as needed */
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+}
+
+
+/*========================================*/
+
+
+.dropdown-toggle-signup {
+    background-color: dimgray;
+    color: white;
+    border-radius: 5px;
+}
+/**/
+
+
+
+.Link {
+    /* margin-top: 20px; */
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.dropdown-item {
+    color: #212529;
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+    color: rgb(247 247 247 / 90%);
+    color: blue;
+    /*display: none;*/
+}
+
+    .dropdown-item:hover {
+        background-color: #f8f9fa;
+
+.login-link {
+    color: #212529;
+    font-weight: bold;
+    text-decoration: none;
+    margin-left: 10px; 
+}
+
+.login-link:hover {
+        color: #007bff; 
+}

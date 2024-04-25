@@ -1,0 +1,166 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+    html {
+        padding-top: initial;
+        flex: 1;
+        width: auto;
+        
+    }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 200;
+}
+
+.head-one {
+    text-align: center;
+    color: green;
+    font-size: 70px;
+}
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10%;
+}
+
+.row {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    color: currentcolor;
+    background-color: darkkhaki;
+}
+
+.form-group {
+    padding-bottom: 26px;
+    width: max-content;
+    align-content: center;
+    display: inline-table;
+}
+
+.form-group login-button {
+        padding-bottom: 20px;
+
+}
+
+
+.col-md-4 {
+        color: green;
+        font-weight: bold;
+        background-color: lightblue;
+}
+.login-form {
+    border: 1px solid #cccccc;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+
+
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-image: url(../pictures/The-Role-of-a-Dentist-in-Maintaining-Your-Oral-Health.png);
+    background-color: rgba(153, 148, 240, 0.5); /* Black-blue with 50% opacity */
+    background-blend-mode: multiply; /* Blend the background image with the color */
+    background-size: cover;
+    font-family: Arial, sans-serif;
+    /*   margin-bottom: 80px;
+    color: darkblue;
+    font-family: Arial, sans-serif;
+    background-image: url(..);
+    background-size: cover;
+    width: auto flex: fit-content;*/
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    margin: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: solid 2px rgb(166, 166, 203);
+    align-items: center;
+}
+
+.logo img {
+    width: 60px;
+}
+
+ul.outer-ul,
+.outer-ul li {
+    list-style: none;
+    text-align: centre;
+}
+
+/*.signUp {
+    margin: 10px;
+    padding: 5px;
+    background-color: rgb(166, 166, 203);
+    color: white;
+    width: 5rem;
+    border-radius: 5px;
+}*/
+.signUp {
+    background-color: #fff;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    position: relative; 
+    margin: 10px;
+    top: 100%;
+    left: 0; 
+    z-index: 1000;
+    min-width: 10rem;
+    padding: 5px;
+    background-color: rgb(166, 166, 203);
+    color: white;
+    border-radius: 5px;
+}
+
+
+.signUp:hover {
+    background-color: purple;
+}
+
+main {
+    height: 49vh;
+}
+
+footer {
+    background-color: rgb(166, 166, 203);
+    margin-top: 20px;
+    
+    /*height: 10vh;*/
+}
+
+    footer h2 {
+        padding-top: 19px;
+        color: rgb(2, 37, 50);
+        text-align: center;
+    }
+
+.container-footer {
+    text-align: center;
+}
+.container-footer .privacy {
+   margin-bottom: 20px;
+}
+#logoutForm {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}

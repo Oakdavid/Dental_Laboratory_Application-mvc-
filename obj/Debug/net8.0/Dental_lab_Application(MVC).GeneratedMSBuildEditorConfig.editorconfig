@@ -1,0 +1,119 @@
+is_global = true
+build_property.TargetFramework = net8.0
+build_property.TargetFramework = net8.0
+build_property.TargetPlatformMinVersion = 
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = Dental_lab_Application_MVC_
+build_property.RootNamespace = Dental_lab_Application_MVC_
+build_property.ProjectDir = C:\Users\HP\Documents\VS_Application\Dental_lab_Application(MVC)\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.RazorLangVersion = 8.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = C:\Users\HP\Documents\VS_Application\Dental_lab_Application(MVC)
+build_property._RazorSourceGeneratorDebug = 
+
+[C:/Users/HP/Documents/VS_Application/Dental_lab_Application(MVC)/Views/Appointment/CreateAppointment.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXBwb2ludG1lbnRcQ3JlYXRlQXBwb2ludG1lbnQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/HP/Documents/VS_Application/Dental_lab_Application(MVC)/Views/DentalService/CreateDentalService.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGVudGFsU2VydmljZVxDcmVhdGVEZW50YWxTZXJ2aWNlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/HP/Documents/VS_Application/Dental_lab_Application(MVC)/Views/DentalService/UpdateDentalService.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGVudGFsU2VydmljZVxVcGRhdGVEZW50YWxTZXJ2aWNlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/HP/Documents/VS_Application/Dental_lab_Application(MVC)/Views/DentalService/ViewAllDentalServices.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGVudGFsU2VydmljZVxWaWV3QWxsRGVudGFsU2VydmljZXMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/HP/Documents/VS_Application/Dental_lab_Application(MVC)/Views/Doctor/CreateDoctor.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRG9jdG9yXENyZWF0ZURvY3Rvci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/HP/Documents/VS_Application/Dental_lab_Application(MVC)/Views/Doctor/UpdateDoctor.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRG9jdG9yXFVwZGF0ZURvY3Rvci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/HP/Documents/VS_Application/Dental_lab_Application(MVC)/Views/Doctor/ViewAllAvailableDoctor.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRG9jdG9yXFZpZXdBbGxBdmFpbGFibGVEb2N0b3IuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/HP/Documents/VS_Application/Dental_lab_Application(MVC)/Views/Doctor/ViewAllDoctors.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRG9jdG9yXFZpZXdBbGxEb2N0b3JzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/HP/Documents/VS_Application/Dental_lab_Application(MVC)/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/HP/Documents/VS_Application/Dental_lab_Application(MVC)/Views/Home/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/HP/Documents/VS_Application/Dental_lab_Application(MVC)/Views/Patient/CreatePatient.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGF0aWVudFxDcmVhdGVQYXRpZW50LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/HP/Documents/VS_Application/Dental_lab_Application(MVC)/Views/Patient/UpdatePatientProfile.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGF0aWVudFxVcGRhdGVQYXRpZW50UHJvZmlsZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/HP/Documents/VS_Application/Dental_lab_Application(MVC)/Views/Patient/ViewAllAssignedPatient.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGF0aWVudFxWaWV3QWxsQXNzaWduZWRQYXRpZW50LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/HP/Documents/VS_Application/Dental_lab_Application(MVC)/Views/Patient/ViewAllPatient.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGF0aWVudFxWaWV3QWxsUGF0aWVudC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/HP/Documents/VS_Application/Dental_lab_Application(MVC)/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/HP/Documents/VS_Application/Dental_lab_Application(MVC)/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/HP/Documents/VS_Application/Dental_lab_Application(MVC)/Views/User/DoctorDashBoard.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxEb2N0b3JEYXNoQm9hcmQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/HP/Documents/VS_Application/Dental_lab_Application(MVC)/Views/User/HeadDoctorDashBoard.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxIZWFkRG9jdG9yRGFzaEJvYXJkLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/HP/Documents/VS_Application/Dental_lab_Application(MVC)/Views/User/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxMb2dpbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/HP/Documents/VS_Application/Dental_lab_Application(MVC)/Views/User/PatientDashBoard.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxQYXRpZW50RGFzaEJvYXJkLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/HP/Documents/VS_Application/Dental_lab_Application(MVC)/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/HP/Documents/VS_Application/Dental_lab_Application(MVC)/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/HP/Documents/VS_Application/Dental_lab_Application(MVC)/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-y2v639qh0v
