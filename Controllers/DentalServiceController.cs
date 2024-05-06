@@ -1,6 +1,9 @@
 ﻿using Dental_lab_Application_MVC_.Models.Dtos;
+using Dental_lab_Application_MVC_.Models.Entites;
 using Dental_lab_Application_MVC_.Models.Service.Implementation;
 using Dental_lab_Application_MVC_.Models.Service.Interface;
+using Microsoft.AspNetCore.Authorization;
+
 //using Dental_lab_Application_MVC_.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
@@ -26,18 +29,19 @@ namespace Dental_lab_Application_MVC_.Controllers
             {
                 return BadRequest(ModelState);
             }
-            var service = _dentalService.Add(dentalServiceCreate);
+            var service = _dentalService.Create(dentalServiceCreate);
             if (service != null)
             {
-                // ViewBag.Message = "testing";
-                ViewData["Message"] = "Dental service successfully Created";
-                return View();
+                
+                TempData["Message"] = service.Message;
+                return RedirectToAction("HeadDoctorDashBoard", "User");
+
             }
             else
             {
-                ModelState.AddModelError(string.Empty, "Failed to create dental service");
+                TempData["ErrorMessage"] = service.Message;
+                return View(dentalServiceCreate);
             }
-            return RedirectToAction("Index", "Home");
         }
 
         [HttpGet]
@@ -47,25 +51,27 @@ namespace Dental_lab_Application_MVC_.Controllers
             return View(getAllService);
         }
 
+        [Authorize(Roles = "HeadDoctor")]
         [HttpGet]
         public IActionResult UpdateDentalService(Guid id)
         {
             var getUpdate = _dentalService.Get(id);
             if(getUpdate == null)
             {
-              return RedirectToAction("Index", "Home");
+                return View("Error");
             }
             return View(getUpdate);
         }
 
+        [Authorize(Roles = "HeadDoctor")]
         [HttpPost]
         public IActionResult UpdateDentalService(DentalServiceUpdateRequestModel updatedService)
         {
              var existingService = _dentalService.Update(updatedService);
             if(existingService != null)
             {
-                ViewData["Message"] = "Successfully Created";
-                return RedirectToAction("ViewAllDentalServices");
+                TempData["Message"] = existingService.Message;
+                return RedirectToAction("HeadDoctorDashBoard", "User");
             }
             return View(existingService);
         }

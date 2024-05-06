@@ -16,16 +16,18 @@ namespace Dental_lab_Application_MVC_.Controllers
             _patientService = patientService;
         }
 
+        
         [HttpGet]
         public IActionResult CreatePatient()
         {
             return View();
         }
 
+        
         [HttpPost]
         public IActionResult CreatePatient(PatientCreateRequestModel requestModel)
         {
-            var patient = _patientService.Add(requestModel);
+            var patient = _patientService.Create(requestModel);
             if (patient != null)
             {
                 TempData["Success"] = patient.Message;
@@ -46,25 +48,6 @@ namespace Dental_lab_Application_MVC_.Controllers
             var viewAllPatient = _patientService.GetAll();
             return(View(viewAllPatient));
         }
-        //[HttpGet]
-        //public IActionResult ViewAllAssignedPatient(Guid docId)
-        //{
-        //    // var allAssignedPatientsToDoctor = _patientService.GetAllPatientAssigned(docId);
-        //    var ids = User?.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-        //    var userId = Guid.Parse(ids);
-        //    var allAssignedPatientsToDoctor = _patientService.GetAllPatientAssigned(userId);
-        //    if(allAssignedPatientsToDoctor != null)
-        //    {
-                
-        //        return RedirectToAction("DoctorDashBoard", "User");
-        //    }
-        //    else
-        //    {
-        //        TempData["ErrorMessage"] = "Failed to assign patient";
-        //    }
-        //    return null;
-        //}
-
         [Authorize(Roles = "Patient")]
         [HttpGet]
         public IActionResult UpdatePatientProfile(Guid id)

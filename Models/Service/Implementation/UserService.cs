@@ -66,15 +66,18 @@ namespace Dental_lab_Application_MVC_.Models.Service.Implementation
                 {
                     return new UserDto
                     {
-                        Message = "Invalid Credentials",
+                        Message = "User not found",
                         Status = false
                     };
                 }
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"An error occurred while attempting to log in: {ex.Message}");
-                throw;
+                return new UserDto
+                { 
+                    Message = "Email or Password not found",
+                    Status = false
+                };
             }
             
         }

@@ -1,13 +1,7 @@
-﻿using Dental_lab_Application_MVC_.Models.Context;
-using Dental_lab_Application_MVC_.Models.Dtos;
+﻿using Dental_lab_Application_MVC_.Models.Dtos;
 using Dental_lab_Application_MVC_.Models.Entites;
-using Dental_lab_Application_MVC_.Models.Exceptions;
-using Dental_lab_Application_MVC_.Models.Repository.Implementation;
 using Dental_lab_Application_MVC_.Models.Repository.Interfaces;
 using Dental_lab_Application_MVC_.Models.Service.Interface;
-using Org.BouncyCastle.Asn1.Ocsp;
-using System;
-using System.Linq.Expressions;
 
 namespace Dental_lab_Application_MVC_.Models.Service.Implementation
 {
@@ -22,7 +16,7 @@ namespace Dental_lab_Application_MVC_.Models.Service.Implementation
             _unitOfWork = unitOfWork;
         }
 
-        public DentalServiceDto Add(DentalServiceCreateRequestModel createModel)
+        public DentalServiceDto Create(DentalServiceCreateRequestModel createModel)
         {
             bool dentalServiceExist = _dentalServiceRepository.Exist( e => e.Code == createModel.Code || e.Name == createModel.Name);
             if (dentalServiceExist)
@@ -41,7 +35,7 @@ namespace Dental_lab_Application_MVC_.Models.Service.Implementation
                 Code = createModel.Code,
                 Cost = createModel.Cost,
             };
-            _dentalServiceRepository.AddDentalService(dentalServiceDto);
+            _dentalServiceRepository.CreateDentalService(dentalServiceDto);
             _unitOfWork.Save();
 
             return new DentalServiceDto

@@ -1,8 +1,8 @@
 ﻿using Dental_lab_Application_MVC_.Models.Dtos;
 using Dental_lab_Application_MVC_.Models.Entites;
+using Dental_lab_Application_MVC_.Models.Enum;
 using Dental_lab_Application_MVC_.Models.Repository.Interfaces;
 using Dental_lab_Application_MVC_.Models.Service.Interface;
-using System.Runtime.CompilerServices;
 
 namespace Dental_lab_Application_MVC_.Models.Service.Implementation
 {
@@ -23,19 +23,37 @@ namespace Dental_lab_Application_MVC_.Models.Service.Implementation
             _unitOfWork = unitOfWork;
         }
 
-        public AppointmentDto Add(AppointmentRequestModel appointmentRequestModel)
+        public AppointmentDto Create(AppointmentRequestModel appointmentRequestModel)
         {
-            var patient = _patientRepository.Get(p => p.UserId == appointmentRequestModel.PatientId);
-            if(patient == null)
+            var patient = _patientRepository.Get(p => p.UserId == appointmentRequestModel.UserId);
+            if (patient == null)
             {
+                var appointments = new Appointment
+                {
+                    PatientId = appointmentRequestModel.PatientId,
+                    DateOfAppointment = DateTime.Now,
+                    AppointmentType = Enum.AppointmentType.Physical,
+                    BriefMessage = appointmentRequestModel.BriefMessage,
+                    AppointmentStatus = Enum.AppointmentStatus.Initialized,
+
+                };
+                _appointmentRepository.CreateAppointment(appointments);
+                _unitOfWork.Save();
                 return new AppointmentDto
                 {
-                    Message = "Patient appointment not found",
-                    Status = false,
-                    Data = null,
+                    Id = appointments.Id,
+                    PatientId = appointments.PatientId,
+                    DoctorId = appointments.DoctorId,
+                    DateOfAppointment = appointments.DateOfAppointment,
+                    AppointmentStatus = appointments.AppointmentStatus,
+                    AppointmentType = appointments.AppointmentType,
+                    BriefMessage = appointments.BriefMessage,
+                    Message = "Appointment booked successfully",
+                    Status = false
                 };
             }
-            var existingAppointment = _appointmentRepository.Get(a => a.PatientId == patient.UserId);
+
+            var existingAppointment = _appointmentRepository.Get(a => a.PatientId == patient.Id && a.AppointmentStatus == Enum.AppointmentStatus.Closed);
             if (existingAppointment != null)
             {
                 return new AppointmentDto
@@ -44,35 +62,76 @@ namespace Dental_lab_Application_MVC_.Models.Service.Implementation
                     Status = false,
                     Data = null,
                 };
-            }  
+            }
             var appointment = new Appointment
             {
-                    //Id = patient.Id,
-                    //PatientId = patient.UserId,
-                    //DoctorId = appointmentRequestModel.DoctorId,
-                    DateOfAppointment = DateTime.Now,
-                  //  AppointmentStatus = Enum.AppointmentStatus.Initialized,
-                    AppointmentType = Enum.AppointmentType.Physical,
-                    BriefMessage = appointmentRequestModel.BriefMessage
+                PatientId = patient.Id,
+                DateOfAppointment = DateTime.Now,
+                AppointmentType = Enum.AppointmentType.Physical,
+                BriefMessage = appointmentRequestModel.BriefMessage
             };
-             _appointmentRepository.AddAppointment(appointment);
-             _unitOfWork.Save();
+            _appointmentRepository.CreateAppointment(appointment);
+            _unitOfWork.Save();
             return new AppointmentDto
             {
-                    Id = appointment.Id,
-                    PatientId = appointment.PatientId,
-                    DoctorId = appointment.DoctorId,
-                    DateOfAppointment = appointment.DateOfAppointment,
-                    AppointmentStatus = appointment.AppointmentStatus,
-                    AppointmentType = appointment.AppointmentType,
-                    BriefMessage = appointment.BriefMessage,
+                Id = appointment.Id,
+                PatientId = appointment.PatientId,
+                DoctorId = appointment.DoctorId,
+                DateOfAppointment = appointment.DateOfAppointment,
+                AppointmentStatus = appointment.AppointmentStatus,
+                AppointmentType = appointment.AppointmentType,
+                BriefMessage = appointment.BriefMessage,
+                Message = "Appointment booked",
+                Status = true
             };
-            
+
         }
 
-        public bool AssignDoctorToAppointment(string cardNo, Guid doctorId)
+        //public AppointmentDto Create(AppointmentRequestModel appointmentRequestModel)
+        //{
+        //    var patient = _patientRepository.Get(p => p.UserId == appointmentRequestModel.UserId);
+        //    if (patient == null)
+        //    {
+        //        return new AppointmentDto
+        //        {
+        //            Message = "Patient not found",
+        //            Status = false,
+        //            Data = null
+        //        };
+        //    }
+
+        //    var appointment = new Appointment
+        //    {
+        //        PatientId = patient.Id,
+        //        DateOfAppointment = DateTime.Now,
+        //        AppointmentType = Enum.AppointmentType.Physical,
+        //        BriefMessage = appointmentRequestModel.BriefMessage,
+        //        AppointmentStatus = Enum.AppointmentStatus.Initialized
+        //    };
+
+        //    _appointmentRepository.CreateAppointment(appointment);
+        //    _unitOfWork.Save();
+
+        //    return new AppointmentDto
+        //    {
+        //        Id = appointment.Id,
+        //        PatientId = appointment.PatientId,
+        //        DoctorId = appointment.DoctorId,
+        //        DateOfAppointment = appointment.DateOfAppointment,
+        //        AppointmentStatus = appointment.AppointmentStatus,
+        //        AppointmentType = appointment.AppointmentType,
+        //        BriefMessage = appointment.BriefMessage,
+        //        Message = "Appointment booked successfully",
+        //        Status = true
+        //    };
+
+        //}
+
+
+        public bool AssignDoctorToAppointment(Guid patientId, Guid doctorId)
         {
-            var appointment = _appointmentRepository.Get( a => a.Patient.CardNo == cardNo  && a.AppointmentStatus == Enum.AppointmentStatus.Initialized);
+
+            var appointment = _appointmentRepository.Get( a => a.PatientId == patientId  && a.AppointmentStatus == Enum.AppointmentStatus.Initialized);
             var doctor = _doctorRepository.Get(d => d.Id == doctorId);
             if( appointment == null || doctor == null) 
             {
@@ -80,11 +139,69 @@ namespace Dental_lab_Application_MVC_.Models.Service.Implementation
             }
             appointment.DoctorId = doctorId;
             appointment.AppointmentStatus = Enum.AppointmentStatus.Assigned;
+            doctor.IsAvailable = false;
+            _appointmentRepository.Update(appointment);
+            _doctorRepository.UpdateDoctorStatus(doctor);
+            _unitOfWork.Save();
+            return true;
+        }
+
+        //public bool CloseAssignedAppointment(Guid patientId, Guid doctorId)     // i might need to remove this
+        //{
+            
+        //    var closedAssignedAppointment = new AppointmentDto();
+        //    var appointment = _appointmentRepository.Get(a => a.PatientId == patientId && a.AppointmentStatus == Enum.AppointmentStatus.Assigned);
+        //    var doctor = _doctorRepository.Get(d => d.Id == doctorId);
+        //    if (appointment == null || doctor == null)
+        //    {
+        //        return false;
+        //    }
+        //    if(appointment.AppointmentStatus == Enum.AppointmentStatus.Closed)
+        //    {
+        //        return false;
+        //    }
+        //    appointment.DoctorId = doctorId;
+        //    appointment.AppointmentStatus = Enum.AppointmentStatus.Closed;
+        //    doctor.IsAvailable = true;
+        //    _appointmentRepository.Update(appointment);
+        //    _doctorRepository.UpdateDoctorStatus(doctor);
+        //    _unitOfWork.Save();
+        //    return true;
+
+        //}
+
+        public bool CloseAssignedAppointment(Guid doctorId)
+        {
+            var doctor = _doctorRepository.Get(d => d.Id == doctorId);
+
+            if (doctor == null)
+            {
+                return false;
+            }
+
+            var appointment = _appointmentRepository.Get(a => a.DoctorId == doctorId && a.AppointmentStatus == Enum.AppointmentStatus.Assigned);
+
+            if (appointment == null)
+            {
+                return false;
+            }
+
+           
+            var patientId = appointment.PatientId;
+
+            if (appointment.AppointmentStatus == Enum.AppointmentStatus.Closed)
+            {
+                return false;
+            }
+
+            appointment.AppointmentStatus = Enum.AppointmentStatus.Closed;
             doctor.IsAvailable = true;
             _appointmentRepository.Update(appointment);
             _doctorRepository.UpdateDoctorStatus(doctor);
-            return true;
+            _unitOfWork.Save();
+            return true; 
         }
+
 
         public AppointmentDto Get(Guid id)
         {
@@ -109,6 +226,33 @@ namespace Dental_lab_Application_MVC_.Models.Service.Implementation
                 Message = "Appointment not found",
                 Status = false,
                 Data = null,
+            };
+        }
+
+        public AppointmentDto PatientViewBookedAppointment(Guid patientId)
+        {
+            var doctorAssigned = _doctorRepository.Get(d => d.IsAvailable == false);
+            var assignedAppointment = _appointmentRepository.GetAppointment(patientId); 
+            if(assignedAppointment != null && assignedAppointment.AppointmentStatus == Enum.AppointmentStatus.Assigned )
+            {
+                var appointment = new AppointmentDto
+                {
+                    Id = assignedAppointment.Id,
+                    DoctorId = assignedAppointment.DoctorId,
+                    PatientId = assignedAppointment.PatientId,
+                    AppointmentStatus = assignedAppointment.AppointmentStatus,
+                    AppointmentType = assignedAppointment.AppointmentType,
+                    DateOfAppointment = assignedAppointment.DateOfAppointment,
+                    BriefMessage = assignedAppointment.BriefMessage,
+                    Message = "Appointment Found",
+                    Status = true
+                };
+                return appointment;
+            }
+            return new AppointmentDto
+            {
+                Message = "No assigned appointment",
+                Status = false,
             };
         }
 
@@ -141,6 +285,38 @@ namespace Dental_lab_Application_MVC_.Models.Service.Implementation
                    Status = false,
                    Message = "No Appointment found"
                }
+            };
+        }
+        public ICollection<AppointmentDto> GetDoctorAssignedAppointments(Guid doctorId)
+        {
+            var assignedAppointments = _appointmentRepository.GetAll()
+                .Where(a => a.DoctorId == doctorId && a.AppointmentStatus == Enum.AppointmentStatus.Assigned)
+                .Select(a => new AppointmentDto
+                {
+                    Id = a.Id,
+                    DoctorId = a.DoctorId,
+                    PatientId = a.PatientId,
+                    AppointmentStatus = a.AppointmentStatus,
+                    AppointmentType = a.AppointmentType,
+                    DateOfAppointment = a.DateOfAppointment,
+                    BriefMessage = a.BriefMessage,
+                    Message = "Appointment Found",
+                    Status = true,
+                }).ToList();
+
+
+            if (assignedAppointments.Any())
+            {
+                return assignedAppointments;
+            }
+
+            return new List<AppointmentDto>
+            {
+                new AppointmentDto
+                {
+                    Message = "No assigned appointments found for this doctor",
+                    Status = false
+                }
             };
         }
 
@@ -178,7 +354,40 @@ namespace Dental_lab_Application_MVC_.Models.Service.Implementation
             };
         }
 
-        public ICollection<AppointmentDto> GetAllInitialized()
+        public ICollection<AppointmentDto> GetAllClosedAppointment()
+        {
+            var allAppointment = _appointmentRepository.GetAll();
+
+            var allClosedAppointment = allAppointment.Where(a => a.AppointmentStatus == Enum.AppointmentStatus.Closed);
+
+            var assignedAppointmentDtos = allClosedAppointment.Select(a => new AppointmentDto
+            {
+                Id = a.Id,
+                DoctorId = a.DoctorId,
+                PatientId = a.PatientId,
+                AppointmentStatus = a.AppointmentStatus,
+                AppointmentType = a.AppointmentType,
+                DateOfAppointment = a.DateOfAppointment,
+                BriefMessage = a.BriefMessage,
+                Status = true,
+            }).ToList();
+
+            if (assignedAppointmentDtos.Any())
+            {
+                return assignedAppointmentDtos;
+            }
+
+            return new List<AppointmentDto>
+            {
+                new AppointmentDto
+                {
+                    Message = "No assigned appointments found",
+                    Status = false
+                }
+            };
+        }
+
+        public ICollection<AppointmentDto> GetAllInitializedAppointment()
         {
             var initialized = _appointmentRepository.GetAll();
 
@@ -188,13 +397,13 @@ namespace Dental_lab_Application_MVC_.Models.Service.Implementation
                 Id = a.Id,
                 DoctorId = a.DoctorId,
                 PatientId = a.PatientId,
-                AppointmentStatus = a.AppointmentStatus,
+                AppointmentStatus = Enum.AppointmentStatus.Initialized,
                 AppointmentType = a.AppointmentType,
                 DateOfAppointment = a.DateOfAppointment,
                 BriefMessage = a.BriefMessage,
-                Message = "Found",
-                Status = true,
             }).ToList();
+
+            
 
             if(allInitializedDto.Any() )
             {
@@ -211,48 +420,48 @@ namespace Dental_lab_Application_MVC_.Models.Service.Implementation
             };
         }
 
-        public AppointmentDto GetAppointmentByDoctorId(Guid id)
-        {
-            var getAppointmentByDoctorId = _appointmentRepository.Get( a => a.DoctorId == id );
-            if( getAppointmentByDoctorId != null )
-            {
-                return new AppointmentDto
-                {
-                    Id = getAppointmentByDoctorId.Id,
-                    DoctorId = getAppointmentByDoctorId.DoctorId,
-                    PatientId = getAppointmentByDoctorId.PatientId,
-                    AppointmentStatus = getAppointmentByDoctorId.AppointmentStatus,
-                    AppointmentType = getAppointmentByDoctorId.AppointmentType,
-                    DateOfAppointment = getAppointmentByDoctorId.DateOfAppointment,
-                    BriefMessage = getAppointmentByDoctorId.BriefMessage,
-                    Message = "Found",
-                    Status = true,
-                };
-            }
+        //public AppointmentDto GetAppointmentByDoctorId(Guid id)
+        //{
+        //    var getAppointmentByDoctorId = _appointmentRepository.Get( a => a.DoctorId == id );
+        //    if( getAppointmentByDoctorId != null )
+        //    {
+        //        return new AppointmentDto
+        //        {
+        //            Id = getAppointmentByDoctorId.Id,
+        //            DoctorId = getAppointmentByDoctorId.DoctorId,
+        //            PatientId = getAppointmentByDoctorId.PatientId,
+        //            AppointmentStatus = getAppointmentByDoctorId.AppointmentStatus,
+        //            AppointmentType = getAppointmentByDoctorId.AppointmentType,
+        //            DateOfAppointment = getAppointmentByDoctorId.DateOfAppointment,
+        //            BriefMessage = getAppointmentByDoctorId.BriefMessage,
+        //            Message = "Found",
+        //            Status = true,
+        //        };
+        //    }
 
-            return null;
-        }
+        //    return null;
+        //}
 
-        public AppointmentDto GetAppointmentByPatientId(Guid patientId)
-        {
-            var getAppointmentByPatientId = _appointmentRepository.Get(a => a.PatientId == patientId);
-            if (getAppointmentByPatientId != null)
-            {
-                return new AppointmentDto
-                {
-                    Id = getAppointmentByPatientId.Id,
-                    DoctorId = getAppointmentByPatientId.DoctorId,
-                    PatientId = getAppointmentByPatientId.PatientId,
-                    AppointmentStatus = getAppointmentByPatientId.AppointmentStatus,
-                    AppointmentType = getAppointmentByPatientId.AppointmentType,
-                    DateOfAppointment = getAppointmentByPatientId.DateOfAppointment,
-                    BriefMessage = getAppointmentByPatientId.BriefMessage,
-                    Message = "Found",
-                    Status = true,
-                };
-            }
+        //public AppointmentDto GetAppointmentByPatientId(Guid patientId)
+        //{
+        //    var getAppointmentByPatientId = _appointmentRepository.Get(a => a.PatientId == patientId);
+        //    if (getAppointmentByPatientId != null)
+        //    {
+        //        return new AppointmentDto
+        //        {
+        //            Id = getAppointmentByPatientId.Id,
+        //            DoctorId = getAppointmentByPatientId.DoctorId,
+        //            PatientId = getAppointmentByPatientId.PatientId,
+        //            AppointmentStatus = getAppointmentByPatientId.AppointmentStatus,
+        //            AppointmentType = getAppointmentByPatientId.AppointmentType,
+        //            DateOfAppointment = getAppointmentByPatientId.DateOfAppointment,
+        //            BriefMessage = getAppointmentByPatientId.BriefMessage,
+        //            Message = "Found",
+        //            Status = true,
+        //        };
+        //    }
 
-            return null;
-        }
+        //    return null;
+        //}
     }
 }

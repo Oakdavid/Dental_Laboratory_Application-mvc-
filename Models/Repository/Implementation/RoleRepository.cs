@@ -16,7 +16,7 @@ namespace Dental_lab_Application_MVC_.Models.Repository.Implementation
             _dbContext = dbContext;
         }
 
-        public Role AddRole(Role role)
+        public Role CreateRole(Role role)
         {
             _dbContext.Roles.Add(role);
             return role;

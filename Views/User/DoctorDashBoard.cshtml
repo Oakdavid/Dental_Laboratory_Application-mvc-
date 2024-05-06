@@ -10,68 +10,57 @@
 
     }
 }
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"]</title>
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/DoctorDashBoard.css" asp-append-version="true" />
 </head>
 <body>
-    <div class ="text-center">
-        <header>
-            <h1 id="welcomeMessage"  class="display-4"> Welcome Doctor @User.FindFirst(ClaimTypes.Name).Value </h1>
-            <script>
-                var welcomeMessage = document.getElementById("welcomeMessage");
-                function hideWelcomeMessage() { welcomeMessage.style.display = "none"; }
-                setTimeout(hideWelcomeMessage, 3000);
-            </script>
-        </header>
-    </div>
-    <nav>
-        <ul>
-            <li><a href="#">View All Patients Assigned</a></li>
-            <li><a href="#">Send a Report to Patient</a></li>
-        </ul>
-    </nav>
+    <nav id="menu">
+        <div class="logo">
+            <img src="pictures/Logo.jpg" alt=" ">
+            <h2>RYC Dental Lab</h2>
+        </div>
+        <div class="text-center">
+            <header>
+                <h1 id="welcomeMessage" class="display-4"> Welcome Dr @User.FindFirst(ClaimTypes.Name).Value </h1>
+            </header>
+        </div>
 
-    <form id="logoutForm" asp-controller="User" asp-action="Logout" method="post">
-        <button type="submit" class="btn btn-dark">Logout</button>
-    </form>
-
-    <div>
-        <main>
-            <section class="Dental services">
+        <ul class="items">
+            <li>
                 <div class="dental services list">
                     <a asp-action="ViewAllDentalServices" asp-controller="DentalService"> Dental services</a>
+                        <i class="fa fa-user"></i>
+                    </a>
                 </div>
-            </section>
-        </main>
-    </div>
+            </li>
 
-    <div>
-        <main>
-            <section class="Update your specialization">
-                <div class="doctor update">
+            <li>
+                <div class="doctor service">
                     <a asp-action="UpdateDoctor" asp-controller="Doctor"> Update your Profile</a>
+                        <i class="fa fa-user"></i>
+                    </a>
                 </div>
-            </section>
-        </main>
-    </div>
+            </li>
 
-    <div>
-        <a asp-action="DoctorDashBoard" asp-controller="User">Back to Home</a>
-    </div>  
-    </>
+            <li>
+                <div class="doctor service">
+                    <a asp-action="AllAssignedAppointmentsToADoctor" asp-controller="Appointment"> View Assigned Appointment</a>
+                    <i class="fa fa-user"></i>
+                    </a>
+                </div>
+            </li>
+        </ul>
+
+        <form id="logoutForm" asp-controller="User" asp-action="Logout" method="post">
+            <button type="submit" class="btn btn-dark">Logout</button>
+        </form>
+
+    </nav>
 </body>
 </html>
 
-
-<nav>
-    <ul>
-        <li><a href="#">view all Patients assigned </a></li>
-        <li><a href="#">send a report to patient</a></li>
-    </ul>
-</nav>

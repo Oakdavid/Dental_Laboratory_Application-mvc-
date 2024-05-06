@@ -16,7 +16,7 @@ namespace Dental_lab_Application_MVC_.Models.Repository.Implementation
             _dbContext = dbContext;
         }
 
-        public DentalService AddDentalService(DentalService dentalService)
+        public DentalService CreateDentalService(DentalService dentalService)
         {
             _dbContext.DentalServices.Add(dentalService);
             return dentalService;

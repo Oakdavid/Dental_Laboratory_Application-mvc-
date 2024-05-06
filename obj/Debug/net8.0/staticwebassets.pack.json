@@ -9,12 +9,28 @@
       "PackagePath": "staticwebassets\\css\\BookAppointment.css"
     },
     {
+      "Id": "C:\\Users\\HP\\Documents\\VS_Application\\Dental_lab_Application(MVC)\\wwwroot\\css\\CreateDoctor.css",
+      "PackagePath": "staticwebassets\\css\\CreateDoctor.css"
+    },
+    {
+      "Id": "C:\\Users\\HP\\Documents\\VS_Application\\Dental_lab_Application(MVC)\\wwwroot\\css\\CreatePatient.css",
+      "PackagePath": "staticwebassets\\css\\CreatePatient.css"
+    },
+    {
+      "Id": "C:\\Users\\HP\\Documents\\VS_Application\\Dental_lab_Application(MVC)\\wwwroot\\css\\DoctorDashBoard.css",
+      "PackagePath": "staticwebassets\\css\\DoctorDashBoard.css"
+    },
+    {
+      "Id": "C:\\Users\\HP\\Documents\\VS_Application\\Dental_lab_Application(MVC)\\wwwroot\\css\\HeadDoctorDashBoard.css",
+      "PackagePath": "staticwebassets\\css\\HeadDoctorDashBoard.css"
+    },
+    {
       "Id": "C:\\Users\\HP\\Documents\\VS_Application\\Dental_lab_Application(MVC)\\wwwroot\\css\\HomeIndex.css",
       "PackagePath": "staticwebassets\\css\\HomeIndex.css"
     },
     {
-      "Id": "C:\\Users\\HP\\Documents\\VS_Application\\Dental_lab_Application(MVC)\\wwwroot\\css\\customLayout.css",
-      "PackagePath": "staticwebassets\\css\\customLayout.css"
+      "Id": "C:\\Users\\HP\\Documents\\VS_Application\\Dental_lab_Application(MVC)\\wwwroot\\css\\PatientDashBoard.css",
+      "PackagePath": "staticwebassets\\css\\PatientDashBoard.css"
     },
     {
       "Id": "C:\\Users\\HP\\Documents\\VS_Application\\Dental_lab_Application(MVC)\\wwwroot\\css\\login.css",
@@ -25,8 +41,16 @@
       "PackagePath": "staticwebassets\\css\\site.css"
     },
     {
+      "Id": "C:\\Users\\HP\\Documents\\VS_Application\\Dental_lab_Application(MVC)\\wwwroot\\css\\stylePatientDashBoard.css",
+      "PackagePath": "staticwebassets\\css\\stylePatientDashBoard.css"
+    },
+    {
       "Id": "C:\\Users\\HP\\Documents\\VS_Application\\Dental_lab_Application(MVC)\\wwwroot\\favicon.ico",
       "PackagePath": "staticwebassets\\favicon.ico"
+    },
+    {
+      "Id": "C:\\Users\\HP\\Documents\\VS_Application\\Dental_lab_Application(MVC)\\wwwroot\\js\\patientDashBoardStyle.js",
+      "PackagePath": "staticwebassets\\js\\patientDashBoardStyle.js"
     },
     {
       "Id": "C:\\Users\\HP\\Documents\\VS_Application\\Dental_lab_Application(MVC)\\wwwroot\\js\\site.js",
@@ -267,6 +291,14 @@
     {
       "Id": "C:\\Users\\HP\\Documents\\VS_Application\\Dental_lab_Application(MVC)\\wwwroot\\pictures\\The-Role-of-a-Dentist-in-Maintaining-Your-Oral-Health.png",
       "PackagePath": "staticwebassets\\pictures\\The-Role-of-a-Dentist-in-Maintaining-Your-Oral-Health.png"
+    },
+    {
+      "Id": "C:\\Users\\HP\\Documents\\VS_Application\\Dental_lab_Application(MVC)\\wwwroot\\pictures\\alwaysSmile.jpg",
+      "PackagePath": "staticwebassets\\pictures\\alwaysSmile.jpg"
+    },
+    {
+      "Id": "C:\\Users\\HP\\Documents\\VS_Application\\Dental_lab_Application(MVC)\\wwwroot\\pictures\\background2.jpg",
+      "PackagePath": "staticwebassets\\pictures\\background2.jpg"
     },
     {
       "Id": "C:\\Users\\HP\\Documents\\VS_Application\\Dental_lab_Application(MVC)\\wwwroot\\pictures\\backgroung.jpeg",

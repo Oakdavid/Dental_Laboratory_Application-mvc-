@@ -9,7 +9,6 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"]</title>
-    <link rel="stylesheet" href="~/css/site.css" />
     <link rel="stylesheet" href="~/css/HomeIndex.css" />
 </head>
 <body>
@@ -25,60 +24,33 @@
                 <div class="inner-container">
                     <ul>
                         <li><a href="#" class="nav-link">Home</a></li>
-                        <li><a href="#" class="nav-link">Services</a></li>
+                        <li>
+                            <a asp-action="ViewAllDentalServices" asp-controller="DentalService"> Our Services</a>
+                        </li>
                         <li><a href="#" class="nav-link">About</a></li>
                     </ul>
 
                 </div>
 
-              @*   <div class="Link">
-                    <ul class="nav-link dropdown-toggle-signup" href="#" role="button" data-bs-toggle="dropdown"
-                       aria-expanded="false">
-                        <li class="signup">SignUp
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" asp-area="" asp-controller="Doctor" asp-action="CreateDoctor">Doctor</a></li>
-                                <li><a class="dropdown-item" asp-area="" asp-controller="Patient" asp-action="CreatePatient">Patient</a></li>
-                            </ul>
-                        </li>
-                        
-                    </ul>
-
-                    
-                    <li class="nav-item">
-                        <a class="nav-link text-dark login-link" asp-area="" asp-controller="User"
-                           asp-action="Login">Login</a>
-                    </li>
-                </div> *@
-
-             @*    <div class="Link">
-                    <ul class="nav-link dropdown-toggle-signup" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        <li class="signup">SignUp</li>
-                    </ul>
-
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <ul>
-                            <li><a class="dropdown-item" asp-area="" asp-controller="Doctor" asp-action="CreateDoctor">Doctor</a></li>
-                            <li><a class="dropdown-item" asp-area="" asp-controller="Patient" asp-action="CreatePatient">Patient</a></li>
+                <div class="Link">
+                    <div class="dropdown-toggle-signup">
+                        <ul class="nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <li class="signup">SignUp</li>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <ul>
+                                    <li><a class="dropdown-item" asp-area="" asp-controller="Doctor" asp-action="CreateDoctor">Doctor</a></li>
+                                    <li><a class="dropdown-item" asp-area="" asp-controller="Patient" asp-action="CreatePatient">Patient</a></li>
+                                </ul>
+                            </div>
                         </ul>
                     </div>
+                </div>
 
+                <duv>
                     <li class="nav-item">
                         <a class="nav-link text-dark login-link" asp-area="" asp-controller="User" asp-action="Login">Login</a>
                     </li>
-                </div> *@
-                <div class="Link">
-                    <ul class="nav-link dropdown-toggle-signup" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        <li class="signup">SignUp</li>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <ul>
-                                <li><a class="dropdown-item" href="#">Doctor</a></li>
-                                <li><a class="dropdown-item" href="#">Patient</a></li>
-                            </ul>
-                        </div>
-                    </ul>
-                </div>
-
-
+                </div> 
 
             </div>
         </nav>

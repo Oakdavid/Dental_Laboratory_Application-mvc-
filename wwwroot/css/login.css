@@ -1,21 +1,40 @@
-﻿*{
+﻿* {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    color: deepskyblue;
+}
+.row {
+    display: flex;
+    color: currentcolor;
+}
+main.pb-3 {
+    font-family: math;
 }
 
-body{
+body {
     background-color: skyblue;
+    font-family: Arial, sans-serif;
+    background-image: url(../pictures/alwaysSmile.jpg);
+    background-size: cover;
+    background-position: center;
+}
+@media (min-width: 992px) {
+    .container, .container-lg, .container-md, .container-sm {
+        max-width: 250px;
+    }
+}
+.form-group.login-form {
+    display: contents;
 }
 
 .container {
     display: flex;
     flex-direction: column;
     width: 80%;
-    margin: auto;
     align-items: center;
     justify-content: center;
-    margin-top: 5%;
+    margin: auto;
 }
 
 .Patient.row {
@@ -25,13 +44,13 @@ body{
 }
 
 .col-md-4{
-    width: 90%;
+    width: 100%;
 }
 
 .form-group {
     display: flex;
     flex-direction: column;
-    padding-top: 10px;
+    padding-top: 0px;
 }
 
     .form-group input,
@@ -41,6 +60,9 @@ body{
         padding: 10px;
         border-radius: 5px;
     }
+main {
+    height: 49vh;
+}
 
 
 

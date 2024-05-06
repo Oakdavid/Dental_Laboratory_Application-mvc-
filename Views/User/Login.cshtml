@@ -2,23 +2,16 @@
 
 @{
     ViewData["Title"] = "Login";
-      Layout = null;
+      // Layout = null;
 }
-@{
-    if(TempData["success"] != null)
-    {
-        <div class="alert-success">
-            @TempData["Success"].ToString()
-        </div>
-    }
-}
+
 <!DOCTYPE html>
 <head>
 
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"]</title>
-    <link rel="stylesheet" href="~/css/site.css"asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/login.css"asp-append-version="true"/>
 </head>
 <body>
     <div class="container">
@@ -47,7 +40,7 @@
 </body>
 
 <div>
-    <a asp-action="Index">Back to Home</a>
+    <a asp-action="Index" asp-controller="Home"> Sign up</a>
 </div>
 
 @section Scripts {

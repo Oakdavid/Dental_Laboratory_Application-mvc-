@@ -6,7 +6,7 @@ namespace Dental_lab_Application_MVC_.Models.Service.Interface
 {
     public interface IDentalServiceService
     {
-        DentalServiceDto Add(DentalServiceCreateRequestModel createModel);
+        DentalServiceDto Create(DentalServiceCreateRequestModel createModel);
         DentalServiceDto GetByCode(string code);
         DentalServiceDto GetByName(string name);
         ICollection<DentalServiceDto> GetAll();

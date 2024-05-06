@@ -16,7 +16,7 @@ namespace Dental_lab_Application_MVC_.Models.Repository.Implementation
             _dbContext = dbContext;
         }
 
-        public User AddUser(User user)
+        public User CreateUser(User user)
         {
             _dbContext.Users.Add(user);
             return user;
@@ -45,7 +45,7 @@ namespace Dental_lab_Application_MVC_.Models.Repository.Implementation
             return user;
         }
 
-        public IReadOnlyList<User> GetUsers() // it cant be modified. just for reading purposes
+        public IReadOnlyList<User> GetUsers()
         {
             var user = _dbContext.Set<User>()
                 .Include(u => u.Role).ToList();

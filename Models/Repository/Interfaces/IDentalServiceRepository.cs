@@ -5,7 +5,7 @@ namespace Dental_lab_Application_MVC_.Models.Repository.Interfaces
 {
     public interface IDentalServiceRepository
     {
-        DentalService AddDentalService(DentalService dentalService);
+        DentalService CreateDentalService(DentalService dentalService);
         DentalService Get(Guid id);
         bool Exist(Func<DentalService, bool> predicate);
         DentalService Get(Expression<Func<DentalService, bool>> predicate);

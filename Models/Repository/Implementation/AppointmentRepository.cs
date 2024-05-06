@@ -15,7 +15,7 @@ namespace Dental_lab_Application_MVC_.Models.Repository.Implementation
             _dbContext = dbContext;
         }
 
-        public Appointment AddAppointment(Appointment appointment)
+        public Appointment CreateAppointment(Appointment appointment)
         {
             _dbContext.Appointments.Add(appointment);
             return appointment;

@@ -30,7 +30,7 @@ namespace Dental_lab_Application_MVC_.Controllers
             {
                 return BadRequest(ModelState);
             }
-            var doctor = _doctorService.Add(createDoctorRequestModel);
+            var doctor = _doctorService.Create(createDoctorRequestModel);
             if(doctor != null)
             {
                 TempData["Success"] = doctor.Message;

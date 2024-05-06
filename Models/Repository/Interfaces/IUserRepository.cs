@@ -6,7 +6,7 @@ namespace Dental_lab_Application_MVC_.Models.Repository.Interfaces
 {
     public interface IUserRepository
     {
-        User AddUser(User user);
+        User CreateUser(User user);
         User Get(Expression<Func<User, bool>> predicate);
         IReadOnlyList<User> GetUsers();
         ICollection<User> GetAll(Expression<Func<User, bool>> predicate);

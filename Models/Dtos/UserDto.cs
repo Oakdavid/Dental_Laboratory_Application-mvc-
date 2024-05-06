@@ -23,7 +23,6 @@ namespace Dental_lab_Application_MVC_.Models.Dtos
         [Required]
         [StringLength(15, MinimumLength = 5)]
         public string Password { get; set; } = default!;
-       // public string ConfirmPassword { get; set; } = default!;
     }
 
     public class LoginRequestModel

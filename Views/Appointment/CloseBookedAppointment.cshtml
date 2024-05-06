@@ -1,0 +1,58 @@
+﻿@model Dental_lab_Application_MVC_.Models.Dtos.AppointmentDto
+@using Dental_lab_Application_MVC_.Models.Enum
+
+@{
+    ViewData["Title"] = "CloseAssignedAppointment";
+}
+
+<h1>Close book Appointment</h1>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="CloseAssignedAppointment">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Id" class="control-label"></label>
+                <input asp-for="Id" class="form-control" value="@Model?.Id" />
+                <span asp-validation-for="Id" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PatientId" class="control-label"></label>
+                <input asp-for="PatientId" class="form-control" value="@Model?.PatientId" />
+                <span asp-validation-for="PatientId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DoctorId" class="control-label"></label>
+                <input asp-for="DoctorId" class="form-control" value="@Model?.DoctorId" />
+                <select asp-for="DoctorId" class="form-control" asp-items="ViewBag.AvailableDoctors"></select>
+               @*  <span asp-validation-for="DoctorId" class="text-danger"></span> *@
+            </div>
+            <div class="form-group">
+                <label asp-for="DateOfAppointment" class="control-label"></label>
+                <input asp-for="DateOfAppointment" class="form-control" value="@Model?.DateOfAppointment" />
+                <span asp-validation-for="DateOfAppointment" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AppointmentType" class="control-label"></label>
+                <span asp-validation-for="AppointmentType" class="text-danger"></span>
+                <select asp-for="AppointmentType" asp-for="Status" /> @Html.DisplayNameFor(model => model.AppointmentType)"></select>
+
+            </div>
+            <div class="form-group">
+                <label asp-for="BriefMessage" class="control-label"></label>
+                <input asp-for="BriefMessage" class="form-control" value="@Model?.BriefMessage" readonly />
+                <span asp-validation-for="BriefMessage" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Status" /> @Html.DisplayNameFor(model => model.Status)
+                    <select asp-for="Status" asp-items="Html.GetEnumSelectList<AppointmentStatus>()" class="form-control"></select>
+
+                </label>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Assign" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>

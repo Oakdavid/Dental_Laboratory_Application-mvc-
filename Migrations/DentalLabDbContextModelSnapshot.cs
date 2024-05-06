@@ -16,7 +16,7 @@ namespace Dental_lab_Application_MVC_.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "8.0.3")
+                .HasAnnotation("ProductVersion", "8.0.4")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
             modelBuilder.Entity("Dental_lab_Application_MVC_.Models.Entites.Appointment", b =>
@@ -50,16 +50,11 @@ namespace Dental_lab_Application_MVC_.Migrations
                     b.Property<Guid?>("PatientId")
                         .HasColumnType("char(36)");
 
-                    b.Property<Guid>("ServicesId")
-                        .HasColumnType("char(36)");
-
                     b.HasKey("Id");
 
                     b.HasIndex("DoctorId");
 
                     b.HasIndex("PatientId");
-
-                    b.HasIndex("ServicesId");
 
                     b.ToTable("Appointments");
                 });
@@ -226,7 +221,7 @@ namespace Dental_lab_Application_MVC_.Migrations
                             Address = "",
                             Bio = "Easy going",
                             Contact = "07031054058",
-                            DateCreated = new DateTime(2024, 4, 24, 15, 12, 17, 521, DateTimeKind.Local).AddTicks(3739),
+                            DateCreated = new DateTime(2024, 4, 30, 21, 24, 17, 904, DateTimeKind.Local).AddTicks(2858),
                             DateOfBirth = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             FirstName = "",
                             Gender = 0,
@@ -294,21 +289,21 @@ namespace Dental_lab_Application_MVC_.Migrations
                         new
                         {
                             Id = new Guid("6b541cc9-b08b-47d3-b52f-3ca6aa06a1e6"),
-                            DateCreated = new DateTime(2024, 4, 24, 15, 12, 17, 521, DateTimeKind.Local).AddTicks(3572),
+                            DateCreated = new DateTime(2024, 4, 30, 21, 24, 17, 904, DateTimeKind.Local).AddTicks(2687),
                             IsDeleted = false,
                             Name = "HeadDoctor"
                         },
                         new
                         {
                             Id = new Guid("0504ea46-35aa-4949-9c59-b8b32a083ef6"),
-                            DateCreated = new DateTime(2024, 4, 24, 15, 12, 17, 521, DateTimeKind.Local).AddTicks(3641),
+                            DateCreated = new DateTime(2024, 4, 30, 21, 24, 17, 904, DateTimeKind.Local).AddTicks(2767),
                             IsDeleted = false,
                             Name = "Doctor"
                         },
                         new
                         {
                             Id = new Guid("cf58ec7c-7829-4549-a924-ffe60ea3ca14"),
-                            DateCreated = new DateTime(2024, 4, 24, 15, 12, 17, 521, DateTimeKind.Local).AddTicks(3663),
+                            DateCreated = new DateTime(2024, 4, 30, 21, 24, 17, 904, DateTimeKind.Local).AddTicks(2793),
                             IsDeleted = false,
                             Name = "Patient"
                         });
@@ -354,7 +349,7 @@ namespace Dental_lab_Application_MVC_.Migrations
                         new
                         {
                             Id = new Guid("419460cf-bda5-41bd-a342-eb30c795fda3"),
-                            DateCreated = new DateTime(2024, 4, 24, 15, 12, 17, 521, DateTimeKind.Local).AddTicks(3691),
+                            DateCreated = new DateTime(2024, 4, 30, 21, 24, 17, 904, DateTimeKind.Local).AddTicks(2823),
                             IsDeleted = false,
                             Password = "headdoctor",
                             RoleId = new Guid("6b541cc9-b08b-47d3-b52f-3ca6aa06a1e6"),
@@ -373,17 +368,9 @@ namespace Dental_lab_Application_MVC_.Migrations
                         .WithMany("Appointments")
                         .HasForeignKey("PatientId");
 
-                    b.HasOne("Dental_lab_Application_MVC_.Models.Entites.User", "Services")
-                        .WithMany()
-                        .HasForeignKey("ServicesId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.Navigation("Doctor");
 
                     b.Navigation("Patient");
-
-                    b.Navigation("Services");
                 });
 
             modelBuilder.Entity("Dental_lab_Application_MVC_.Models.Entites.Doctor", b =>

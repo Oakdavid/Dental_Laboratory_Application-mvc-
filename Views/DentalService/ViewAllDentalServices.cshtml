@@ -43,8 +43,6 @@
                 @Html.DisplayFor(modelItem => item.Cost)
             </td>
             <td>
-               @*  @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) | *@
                     <a asp-action="UpdateDentalService" asp asp-controller="DentalService" asp-route-id="@item.Id">update</a>
             </td>
         </tr>

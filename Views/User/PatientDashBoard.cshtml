@@ -1,7 +1,7 @@
 ﻿@using System.Security.Claims
 
 @{
-    if (TempData["Success"] != null)
+    if (TempData["success"] != null)
     {
         <div class="alert-success">
             @TempData["Success"].ToString()
@@ -15,44 +15,83 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"]</title>
-    <link rel="stylesheet" href="~/css/site.css" asp-append-asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/stylePatientDashBoard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 <body>
-    <div class="text-center">
-        <header>
-            <h1 id="welcomeMessage" class="display-4"> Welcome @User.FindFirst(ClaimTypes.Name).Value </h1>
-            <script>
-                var welcomeMessage = document.getElementById("welcomeMessage");
-                function hideWelcomeMessage() { welcomeMessage.style.display = "none"; }
-                setTimeout(hideWelcomeMessage, 3000);
-            </script>
-        </header>
-    </div>
-    <form id="logoutForm" asp-controller="User" asp-action="Logout" method="post">
-        <button type="submit" class="btn btn-dark">Logout</button>
-    </form>
+    <nav id="menu">
+        <div class="logo">
+            <img src="pictures/Logo.jpg" alt=" ">
+            <h2>RYC Dental Lab</h2>
+        </div>
+        <div class="text-center">
+            <header>
+                <h1 id="welcomeMessage" class="display-4"> Welcome @User.FindFirst(ClaimTypes.Name).Value </h1>
+            </header>
+        </div>
 
-    <div>
-        <section class="Dental services">
-            <div class="dental services list">
-                <a asp-action="ViewAllDentalServices" asp-controller="DentalService"> Click to view our services</a>
-            </div>
-        </section>
-    </div>
-    <div>
-        <section class="Patient">
-            <div class="Patient services">
-                <a asp-action="UpdatePatientProfile" asp-controller="Patient"> Update your Profile</a>
-            </div>
-        </section>
-    </div>
+        <ul class="items">
+            <li>
+                <div class="dental services list">
+                    <a asp-action="ViewAllDentalServices" asp-controller="DentalService">
+                        <i class="fa fa-user"></i> Click to view our services
+                    </a>
+                </div>
+            </li>
+
+            <li>
+                <div class="Patient services">
+                    <a asp-action="UpdatePatientProfile" asp-controller="Patient">
+                        <i class="fa fa-user"></i> Update your Profile
+                    </a>
+                </div>
+            </li>
+
+            <li>
+                <div class="fa fa-calendar"></div>
+                <div class="appointments">
+                    <a asp-action="CreateAppointment" asp-controller="Appointment">
+                        Click to Book Appointment
+                    </a>
+                </div>
+            </li>
+
+            <li>
+                <div class="appointment">
+                    <a asp-action="PatientViewBookedAppointment" asp-controller="Appointment"> View Booked Appointment</a>
+                </div>
+            </li>
+
+            <li>
+                <div class="close-appointment">
+                    <a asp-action="CloseAssignedAppointment" asp-controller="Appointment">
+                        <i class="fa fa-user"></i> Close Booked Appointment
+                    </a>
+                </div>
+            </li>
+
+            <li>
+                <div class="Patient services">
+                    <a asp-action="index" asp-controller="Home"> Home</a>
+                </div>
+            </li>
+            
+        </ul>
+
+        <form id="logoutForm" asp-controller="User" asp-action="Logout" method="post">
+            <button type="submit" class="btn btn-dark">Logout</button>
+        </form>
+
+    </nav>
 </body>
 </html>
-<div>
+
+
+
+@* <div>
     
     2. i should be able to book an appointment with a doctor(the options should be dynamic
     incase if need be to add another service)
     3. i should be able to view appointment date// it might not be needed
     4. booking of appointment can be virtual or physical
-</div>
-
+</div> *@

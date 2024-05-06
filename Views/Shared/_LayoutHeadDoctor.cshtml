@@ -1,0 +1,56 @@
+﻿@using System.Security.Claims
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/css/HeadDoctorDashBoard.css" asp-append-version="true" />
+     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/Dental_lab_Application_MVC_.styles.css" asp-append-version="true" />
+</head>
+<body>
+    <nav id="menu">
+        <div class="logo">
+            <img src="pictures/Logo.jpg" alt=" ">
+            <h2>RYC Dental Lab</h2>
+        </div>
+        <div class="text-center">
+            <header>
+                <h1 id="welcomeMessage" class="display-4"> Welcome @User.FindFirst(ClaimTypes.Name).Value </h1>
+            </header>
+        </div>
+
+        <ul class="items">
+            <!-- Dashboard menu items -->
+            <li>
+                <div class="dental">
+                    <a asp-action="CreateDentalService" asp-controller="DentalService"> Create Dental Service</a>
+                    <i class="fa fa-user"></i>
+                </div>
+            </li>
+            <!-- Add other menu items here -->
+        </ul>
+
+        <form id="logoutForm" asp-controller="User" asp-action="Logout" method="post">
+            <button type="submit" class="btn btn-dark">Logout</button>
+        </form>
+    </nav>
+    <footer>
+
+        <div class="container-footer">
+            <h2>Regaining your confidence</h2>
+            <span class="privacy">
+                &copy; 2024 - Dental_lab_Application_MVC_ - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            </span>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
+

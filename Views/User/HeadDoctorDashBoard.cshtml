@@ -1,49 +1,93 @@
 ﻿@using System.Security.Claims
-
-<!DOCTYPE html>
+@{
+    if(TempData["Success"] != null)
+    {
+        Layout = null;
+        <div class="alert-success">
+            @TempData["Success"].ToString()
+        </div>
+    }
+}
+<!DOCTYPE html>4
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"]</title>
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+   @*  <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" /> *@
+    <link rel="stylesheet" href="~/css/HeadDoctorDashBoard.css" asp-append-version="true" />
 </head>
 <body>
-    <div class=" text-center"
-    <header>
-       <h1 id="welcomeMessage" class="display-4"> Welcome @User.FindFirst(ClaimTypes.Name).Value </h1>
-       <script>
-            var welcomeMessage = document.getElementById("welcomeMessage");
-             function hideWelcomeMessage() 
-             { welcomeMessage.style.display = "none"; }
-            setTimeout(hideWelcomeMessage, 3000);
-       </script>
-    </header>
-    <form id="logoutForm" asp-controller="User" asp-action="Logout" method="post">
-        <button type="submit" class="btn btn-dark">Logout</button>
-    </form>
+    <nav id="menu">
+        <div class="logo">
+            <img src="pictures/Logo.jpg" alt=" ">
+            <h2>RYC Dental Lab</h2>
+        </div>
+        <div class="text-center">
+            <header>
+                <h1 id="welcomeMessage" class="display-4"> Welcome @User.FindFirst(ClaimTypes.Name).Value </h1>
+            </header>
+        </div>
 
-    </div>
-        <main>
-            <h1 class="viewAllDoctor">
-                <div class="view all Doctors">
-                    <a asp-action="ViewAllDoctors" asp-controller="Doctor"> View all Doctors</a>
+        <ul class="items">
+
+            <li>
+                <div class="dental">
+                    <a asp-action="CreateDentalService" asp-controller="DentalService"> Create Dental Service</a>
+                    <i class="fa fa-user"></i>
+                    </a>
                 </div>
-            </h1>
-        </main>
-    <div>
-        <main>
-            <h1 class="viewAllPatient">
-                <div class="view all Patients">
-                    <a asp-action="ViewAllPatient" asp-controller="Patient"> View all Patients</a>
+            </li>
+
+            <li>
+                <div class="dental-service">
+                    <a asp-action="ViewAllDentalServices" asp-controller="DentalService"> Update Dental Service </a>
+                    <i class="fa fa-user"></i>
+                    </a>
                 </div>
-            </h1>
-        </main>
-    </div>
+            </li>
+
+            <li>
+                <div class="view">
+                    <a asp-action="ViewAllDoctors" asp-controller="Doctor"> View All Doctors</a>
+                    <i class="fa fa-user"></i>
+                    </a>
+                </div>
+            </li>
+
+            <li>
+                <div class="view-all-patients">
+                    <a asp-action="ViewAllPatient" asp-controller="Patient"> View All Patients</a>
+                    <i class="fa fa-user"></i>
+                    </a>
+                </div>
+            </li>
+
+            <li>
+                <div class="appointment">
+                    <a asp-action="GetAllInitializedAppointment" asp-controller="Appointment"> Assigned Appointment</a>
+                    <i class="fa fa-user"></i>
+                    </a>
+                </div>
+            </li>
+
+            <li>
+                <div class="dental-service">
+                    <a asp-action="AllClosedAppointment" asp-controller="Appointment"> View All Closed Appointment </a>
+                    <i class="fa fa-user"></i>
+                    </a>
+                </div>
+            </li>
+        </ul>
+
+        <form id="logoutForm" asp-controller="User" asp-action="Logout" method="post">
+            <button type="submit" class="btn btn-dark">Logout</button>
+        </form>
+
+    </nav>
 </body>
+</html>
 
 
-<h1>i can assign patients to a specific doctor </h1>
-<h1>i can view unasigned patients</h1>
-<h1>i can view all available doctors</h1>
-<h1>i can sack a doctor.(work in progress)</h1>
+@*
+<h1>i can sack a doctor.(work in progress)</h1> *@
 

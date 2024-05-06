@@ -1,0 +1,48 @@
+﻿
+/*body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-image: url(../pictures/alwaysSmile.jpg);
+    background-size: cover;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+}
+
+.container {
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 10px;
+    max-width: 500px;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.inner-container {
+    margin-bottom: 20px;
+}
+
+.alert-success {
+    background-color: #dff0d8;
+    color: #3c763d;
+    padding: 15px;
+    border-radius: 4px;
+    margin-bottom: 20px;
+}
+
+h1 {
+    text-align: center;
+}
+
+hr {
+    border-top: 1px solid #ccc;
+    margin-bottom: 20px;
+}
+
+.back-link {
+    text-align: center;
+}*/

@@ -32,10 +32,9 @@ namespace Dental_lab_Application_MVC_.Models.Service.Implementation
             _doctorRepository = doctorRepository;
         }
 
-        public PatientDto Add(PatientCreateRequestModel requestModel)
+        public PatientDto Create(PatientCreateRequestModel requestModel)
         {
            var exist = _userRepository.Exist( p => p.UserEmail == requestModel.UserEmail || p.UserName == requestModel.UserName);
-            //var exist = _userRepository.Exist(x => x.UserName == mentor.UserName || x.Email == mentor.Email);
             if ( exist )
             {
                 return new PatientDto
@@ -58,7 +57,7 @@ namespace Dental_lab_Application_MVC_.Models.Service.Implementation
                 Role = role,
                 RoleId = role.Id,
             };
-            _userRepository.AddUser(user);
+            _userRepository.CreateUser(user);
 
             Profile profile = new Profile
             {
@@ -76,7 +75,7 @@ namespace Dental_lab_Application_MVC_.Models.Service.Implementation
                 User = user,
                 UserId = user.Id,
             };
-            _profileRepository.AddProfile(profile);
+            _profileRepository.CreateProfile(profile);
             Patient patient = new Patient
             {
                 CardNo = $"RYC/CARDNO/{new Random().Next(01, 100)}",
@@ -85,7 +84,7 @@ namespace Dental_lab_Application_MVC_.Models.Service.Implementation
                 Appointments = requestModel.Appointments,
                 UserId = user.Id,
             };
-            _patientRepository.AddPatient(patient);
+            _patientRepository.CreatePatient(patient);
             _unitOfWork.Save();
 
             return new PatientDto
@@ -140,9 +139,12 @@ namespace Dental_lab_Application_MVC_.Models.Service.Implementation
                 MedicalHistory = p.MedicalHistory,
                 Appointments = p.Appointments,
                 Id = p.Id,
-                FirstName = patientProfile.FirstOrDefault(p => p.UserId == p.Id)?.FirstName,
-                LastName = patientProfile.FirstOrDefault(p => p.UserId == p.Id)?.LastName,
-                Gender = patientProfile.FirstOrDefault(p => p.UserId == p.Id)?.Gender,
+                FirstName = p.User.Profile.FirstName,
+                LastName = p.User.Profile.LastName,
+                Gender = p.User.Profile.Gender,
+                Contact = p.User.Profile.Contact,
+                DateOfBirth = p.User.Profile.DateOfBirth,
+                Address = p.User.Profile.Address,
 
             }).ToList();
             return patients;

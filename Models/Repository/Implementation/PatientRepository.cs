@@ -16,7 +16,7 @@ namespace Dental_lab_Application_MVC_.Models.Repository.Implementation
             _dbContext = dbContext;
         }
 
-        public Patient AddPatient(Patient patient)
+        public Patient CreatePatient(Patient patient)
         {
             _dbContext.Patients.Add(patient);
             return patient;

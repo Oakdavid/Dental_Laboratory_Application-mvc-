@@ -8,7 +8,6 @@ using Dental_lab_Application_MVC_.Models.Entites;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
-//using Dental_lab_Application_MVC_.Models.ViewModels.UserView;
 
 namespace Dental_lab_Application_MVC_.Controllers
 {

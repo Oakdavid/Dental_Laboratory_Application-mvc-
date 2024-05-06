@@ -15,7 +15,7 @@ namespace Dental_lab_Application_MVC_.Models.Repository.Implementation
             _dbContext = dbContext;
         }
 
-        public Profile AddProfile(Profile profile)
+        public Profile CreateProfile(Profile profile)
         {
             _dbContext.Profiles.Add(profile);
             return profile;

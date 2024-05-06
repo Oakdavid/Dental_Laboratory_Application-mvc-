@@ -5,7 +5,7 @@ namespace Dental_lab_Application_MVC_.Models.Repository.Interfaces
 {
     public interface IAppointmentRepository
     {
-        Appointment AddAppointment(Appointment appointment);
+        Appointment CreateAppointment(Appointment appointment);
         Appointment GetAppointment(Guid PatientId);
         Appointment Get(Expression<Func<Appointment, bool>> predicate);
         ICollection<Appointment> GetAll(Expression<Func<Appointment, bool>> predicate);

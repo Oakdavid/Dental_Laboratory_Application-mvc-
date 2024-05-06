@@ -25,10 +25,8 @@ namespace Dental_lab_Application_MVC_.Models.Service.Implementation
             _unitOfWork = unitOfWork;
         }
 
-        public DoctorDto Add(CreateDoctorRequestModel requestModel)
+        public DoctorDto Create(CreateDoctorRequestModel requestModel)
         {
-            //  bool doctorExist = _doctorRepository.Exist(e => e.LicenseNumber == requestModel.LicenseNumber);
-           // bool doctorExist = _doctorRepository.Exist(e => e.User.UserEmail == requestModel.UserEmail);
             var doctorExist = _userRepository.Exist(e => e.UserEmail  == requestModel.User.UserEmail || e.UserName == requestModel.User.UserName);
 
             if (doctorExist)
@@ -54,7 +52,7 @@ namespace Dental_lab_Application_MVC_.Models.Service.Implementation
                 Role = role,
                 RoleId = role.Id,
             };
-            _userRepository.AddUser(user);
+            _userRepository.CreateUser(user);
 
             Profile profile = new Profile
             {
@@ -72,7 +70,7 @@ namespace Dental_lab_Application_MVC_.Models.Service.Implementation
                 User = user,
                 UserId = user.Id,
             };
-            _profileRepository.AddProfile(profile);
+            _profileRepository.CreateProfile(profile);
 
             var doctor = new Doctor
             {
@@ -85,7 +83,7 @@ namespace Dental_lab_Application_MVC_.Models.Service.Implementation
                 UserId = user.Id,
                 
             };
-            _doctorRepository.AddDoctor(doctor);
+            _doctorRepository.CreateDoctor(doctor);
             _unitOfWork.Save();
 
             return new DoctorDto
@@ -95,7 +93,7 @@ namespace Dental_lab_Application_MVC_.Models.Service.Implementation
                 YearsOfExperience = doctor.YearsOfExperience,
                 Specializations = doctor.Specializations,
                 IsAvailable = true,
-                LastName = requestModel.Profile.LastName, // testing
+                LastName = requestModel.Profile.LastName,
                 UserId = user.Id,
                 Id = user.Id,
                 Message = "Success",
@@ -147,8 +145,8 @@ namespace Dental_lab_Application_MVC_.Models.Service.Implementation
         public ICollection<DoctorDto> GetAllAvailableDoctors()
         {
             var doctors = _doctorRepository.GetAll();
-            var availableDoctors = doctors.Where(d => d.IsAvailable);
-            if(availableDoctors != null)
+            var availableDoctors = doctors.Where(d => d.IsAvailable == true).ToList();
+            if(availableDoctors.Any())
             {
                 var doctorDto = availableDoctors.Select(d => new DoctorDto
                 {
@@ -162,7 +160,8 @@ namespace Dental_lab_Application_MVC_.Models.Service.Implementation
                 }).ToList();
                 return doctorDto;
             }
-            return null;
+
+            return new List<DoctorDto>();
         }
 
 

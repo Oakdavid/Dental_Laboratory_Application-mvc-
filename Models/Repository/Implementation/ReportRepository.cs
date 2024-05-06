@@ -16,7 +16,7 @@ namespace Dental_lab_Application_MVC_.Models.Repository.Implementation
             _dbContext = dbContext;
         }
 
-        public Report AddReport(Report report)
+        public Report CreateReport(Report report)
         {
             _dbContext.Reports.Add(report);
             return report;

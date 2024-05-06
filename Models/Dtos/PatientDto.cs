@@ -45,13 +45,8 @@ namespace Dental_lab_Application_MVC_.Models.Dtos
         public string LastName { get; set; } = default!;
         public string Address { get; set; } = default!;
         public DateTime DateOfBirth { get; set; } = default!;
-        //public string? Bio { get; set; }
         public string? Contact { get; set; }
         public Gender Gender { get; set; }
-        //public string? ProfilePicture { get; set; }
-        //public string? SocialMediaLink { get; set; }
-        //public string? Interests { get; set; }
-        //public string? Skills { get; set; }
     }
     public class UpdatePatientRequestModel
     {

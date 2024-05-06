@@ -5,7 +5,7 @@ namespace Dental_lab_Application_MVC_.Models.Repository.Interfaces
 {
     public interface IPatientRepository
     {
-        Patient AddPatient (Patient patient);
+        Patient CreatePatient(Patient patient);
         bool Exist(Func<Patient, bool> predicate);
         bool UpdatePatientStatus(Patient patient);
         Patient Get(Expression<Func<Patient, bool>> predicate);
